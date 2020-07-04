@@ -1,0 +1,151 @@
+@import "../../../sass/variables";
+
+.burger {
+	color: $blue;
+	font-size: 25px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70px;
+}
+
+.idioma {
+	ul {
+		display: flex;
+		justify-content: center;
+		li {
+			padding: 5px 10px;
+			display: flex;
+			align-items: center;
+			.btn {
+				margin-right: 10px;
+				display: flex;
+				align-items: center;
+				img {
+					margin-right: 7px;
+				}
+				span {
+					color: $white;
+					font-family: $Poppins;
+					font-size: 15px;
+				}
+			}
+		}
+	}
+}
+.pointer {
+	cursor: pointer;
+}
+
+.sidenav {
+	font-family: "Open Sans Regular", Sans-Serif;
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	overflow-x: hidden;
+	transition: 0.2s;
+	box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	&--active {
+		width: 100%;
+		opacity: 1;
+		.app-button {
+			display: block;
+			transition: 1.5s;
+			opacity: 1;
+		}
+	}
+}
+
+.sidenav a {
+	padding: 15px 0px 15px 15px;
+	text-decoration: none;
+	color: $white;
+	display: block;
+	transition: 0.3s;
+	font-size: 18px;
+}
+
+.sidenav hr {
+	background: #fff;
+	width: 60%;
+}
+
+.sidenav .closebtn {
+	// position: absolute;
+	// top: 10px;
+	// right: 15px;
+	font-size: 25px;
+	margin-left: 50px;
+	color: $white;
+	cursor: pointer;
+}
+
+.closebtn i {
+	cursor: pointer;
+}
+
+.open__background {
+	padding: 5vw 2vw;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	&__left {
+		width: 50%;
+		display: flex;
+		justify-content: start;
+	}
+	&__right {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+	}
+}
+.menu {
+	display: flex;
+	justify-content: center;
+	ul {
+		padding: 0;
+		list-style: none;
+		li {
+			margin-right: 10px;
+			padding: 15px 30px;
+			a {
+				color: $blue;
+				font-size: 20px;
+				position: relative;
+				font-weight: 700;
+				position: relative;
+				&::before {
+					content: "";
+					width: 15%;
+					height: 2px;
+					position: absolute;
+					top: 25px;
+					background-color: #fff;
+					left: -19%;
+				}
+				&::after {
+					content: "";
+					width: 15%;
+					height: 2px;
+					position: absolute;
+					top: 25px;
+					background-color: #fff;
+					left: -19%;
+					transform: rotate(-88deg);
+				}
+			}
+		}
+	}
+}

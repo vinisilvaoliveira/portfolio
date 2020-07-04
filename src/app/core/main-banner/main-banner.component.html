@@ -1,0 +1,63 @@
+<app-loader *ngIf="loader"></app-loader>
+<section class="main" id="main">
+    <div class="main__img">
+        <app-nav class="main__menu"></app-nav>
+        <div class="main__color">
+            <div class="main__perfil">
+                <div class="main__perfil--description">
+                    <a href="https://www.linkedin.com/in/vinicius-oliveira-89149b136/" target="_blank">
+                        <img src="https://i.ibb.co/XLFBRV5/mypicture.png" alt="logo">
+                        <h1>Vinicius Oliveira</h1>
+                        <h2> {{ languageId === 'PT' ? 'Desenvolvedor Front End' : 'Front End Developer'
+                        }}</h2>
+                    </a>
+                </div>
+                <div class="button">
+                    <a class="button__btn" href="https://drive.google.com/file/d/1jCc-m24HaUbHHV6iilLJCcp4W064YnuU/view"
+                        target="_blank">{{ languageId === 'PT' ? 'Baixar Currículo' : 'Download Curriculum' }}</a>
+                </div>
+            </div>
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <p class="title">Bruno Alves - <span>Senior Deloitte</span></p>
+                    <p class="description">"O Vinicius tem seus objetivos claramente
+                        definidos, está sempre em busca de aprendizagem e de soluções eficientes para compartilhar com
+                        os membros da equipe"
+                    </p>
+
+                </div>
+                <div class="mySlides">
+                    <p class="title">Ravi Queiroz - <span>Designer Bit Seguros</span></p>
+                    <p class="description">"Ótimo profissional, do mesmo jeito que enviei o layout o Vinicius fez
+                        conforme enviei"</p>
+                </div>
+                <div class="mySlides">
+                    <p class="title">Felipe Costa - <span>Pleno Bit Seguros</span></p>
+                    <p class="description">"Profissioional dedicado, entrega sempre nos prazo estipulado, compartilha
+                        conhecimento e aprende muito rapido"</p>
+                </div>
+                <div class="mySlides">
+                    <p class="title">Danrley Candido - <span>Pleno Bit Pagg</span></p>
+                    <p class="description">"Um excelente profissional, acompanho desde o inicio da carreira a
+                        competencia e a dedicação."</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div id="about">
+    <app-about></app-about>
+</div>
+<div id="academic">
+    <app-formacao></app-formacao>
+</div>
+<div id="knowledge">
+    <app-knowledge></app-knowledge>
+</div>
+<div id="contact">
+    <app-contact></app-contact>
+</div>
+<div id="footer">
+    <app-footer></app-footer>
+</div>

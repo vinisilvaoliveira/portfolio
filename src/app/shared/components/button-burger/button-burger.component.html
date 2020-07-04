@@ -1,0 +1,49 @@
+<nav [ngClass]="{'sidenav--active': open_menu }" class="sidenav">
+  <div class="open__background">
+    <div class="header">
+      <div class="header__left col-md-6">
+      </div>
+      <div class="header__right col-md-6">
+        <span class="closebtn" (click)="toggleMenu()"><i class="fas fa-times"></i></span>
+      </div>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="scrollToElement('about')">
+          <a>{{ languageId === 'PT' ? 'Sobre' : 'About' }}</a>
+        </li>
+
+        <li (click)="scrollToElement('academic')">
+          <a>{{ languageId === 'PT' ? 'Formação' : 'Academic' }}</a>
+        </li>
+
+        <li (click)="scrollToElement('knowledge')">
+          <a>{{ languageId === 'PT' ? 'Conhecimentos' : 'Knowledge' }}</a>
+        </li>
+
+        <li (click)="scrollToElement('contact')">
+          <a>{{ languageId === 'PT' ? 'Contato' : 'Contact' }}</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="idioma">
+      <ul>
+        <li *ngFor="let item of languague">
+          <button [id]="item.id" class="btn"
+            [style.background-color]="languageId ==  item.id ? 'rgba(169, 169, 169, 0.7)' : 'transparent'"
+            (click)="onChangeLanguage(item.id)">
+            <img src={{item.img}} alt="">
+            <span>{{ item.legend }}</span>
+          </button>
+
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<!-- <span class="burger" (click)="toggleMenu()"><em class="fas fa-bars"></em></span> -->
+
+<img (click)="toggleMenu()" src="https://i.ibb.co/6HQCZkg/menu.png" alt="Menu">

@@ -1,0 +1,11 @@
+<div class="Lightbox">
+  <div class="Lightbox__box">
+    <ng-content></ng-content>
+
+    <button class="Lightbox__box--close" (click)="onClick.emit($event)">
+      <i class="fas fa-times"></i>
+      <!-- <app-icons icon="fa-times" color="black" size="20">x</app-icons> -->
+    </button>
+
+  </div>
+</div>

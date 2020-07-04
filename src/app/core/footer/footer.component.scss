@@ -1,0 +1,42 @@
+.footer {
+    width: 100%;
+    padding: 30px 0;
+    &__items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--small {
+            margin-right: 10px;
+            :first-child {
+                margin-right: 0px;
+            }
+        }
+        a {
+            margin-right: 10px;
+        }
+    }
+    &__up {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        &__items {
+            flex-direction: column;
+            &--small {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            .links {
+                display: flex;
+            }
+        }
+        &__up {
+            margin-top: -23px;
+        }
+    }
+}

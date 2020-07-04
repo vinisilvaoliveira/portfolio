@@ -1,0 +1,65 @@
+<div class="contact">
+    <div class="container">
+        <div class="contact__title">
+            {{ languageId  === 'PT' ? 'Entre em Contato' : 'Contact' }}
+        </div>
+        <div class="contact__fast">
+            <div class="sociais">
+                <a rel="noopener noreferrer"
+                    href="https://api.whatsapp.com/send?phone=+5511952216311&text=Olá%21%20Seja%20Bem%20Vindo."
+                    class="float-whats" target="_blank" title="Link para contato via WhatsApp">
+                    <img src="https://i.ibb.co/SVGDCFG/Whatsapp.png" alt="Whats" title="Whats">
+                    <p class="description">(11) 95221-6311</p>
+                </a>
+            </div>
+
+            <div class="sociais">
+                <a href="tel:+5511952216311">
+                    <img src="https://i.ibb.co/dGydGtc/phone-i.png" alt="Number" title="Number">
+                    <p class="description">{{ languageId  === 'PT' ? '(11) 95221-6311' : '+55 (11) 95221-6311' }}</p>
+                </a>
+            </div>
+
+            <div class="sociais">
+                <a href="mailto:viniciussoliveira@gmail.com">
+                    <img src="https://i.ibb.co/NWwczbB/envelope.png" alt="Email" title="Email">
+                    <p class="description"> {{ languageId  === 'PT' ? 'E-mail' : 'Email' }}</p>
+                </a>
+            </div>
+
+
+        </div>
+        <div class="contact__filds">
+            <div class="contact__filds--line col-md-8">
+                <label class="label" for="name">{{ languageId  === 'PT' ? 'Nome' : 'Name' }}</label>
+                <input class="text-input" [(ngModel)]="addressEmail.name"
+                    onkeyup="this.value=this.value.replace(/[<>$¨¨!@#1234567890*{}]/g,'')" id="name" name="name"
+                    autocomplete="off" [placeholder]="placeNome" type="text">
+            </div>
+
+            <div class="contact__filds--line col-md-8">
+                <label class="label" for="email">{{ languageId  === 'PT' ? 'E-mail' : 'Email' }}</label>
+                <input class="text-input" [(ngModel)]="addressEmail.email" id="email" name="email" autocomplete="off"
+                    [placeholder]="placeEmail" type="email">
+            </div>
+
+            <div class="contact__filds--line col-md-8">
+                <label class="label" for="mensagem">{{ languageId  === 'PT' ? 'Mensagem' : 'Message' }}</label>
+                <textarea class="text-input txt-mensagem" [(ngModel)]="addressEmail.message" [placeholder]="placeMsg"
+                    autocomplete="off" id="text_mensagem" rows="3"
+                    onkeyup="this.value=this.value.replace(/[<>$¨¨#*{}]/g,'')"></textarea>
+            </div>
+
+            <div class="button">
+                <button class="button__btn"
+                    (click)="sendEmail()">{{ languageId  === 'PT' ? 'Enviar' : 'Send' }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loader *ngIf="loader"></app-loader>
+<app-lightbox *ngIf="modal" (onClick)="modal = ''" class="infos__lightbox">
+
+    {{modal}}
+</app-lightbox>

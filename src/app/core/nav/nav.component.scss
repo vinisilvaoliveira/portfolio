@@ -1,0 +1,240 @@
+@import "../../sass/variables";
+
+.idioma {
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        li {
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            .btn {
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                img {
+                    margin-right: 7px;
+                }
+                span {
+                    color: $white;
+                    font-family: $Poppins;
+                    font-size: 15px;
+                    &:hover {
+                        background-color: $blue;
+                    }
+                }
+            }
+            a {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.menu {
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(24, 23, 22, 0.7);
+    text-align: center;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        list-style: none;
+        li {
+            margin-right: 10px;
+            padding: 15px 30px;
+            a {
+                color: $blue;
+                font-size: 20px;
+                position: relative;
+                font-weight: 700;
+                &::before {
+                    content: "";
+                    transition: width 0.3s;
+                    width: 0%;
+                    position: absolute;
+                    bottom: -2px;
+                    background-color: #fff;
+                    height: 2px;
+                    left: 0;
+                }
+                &:hover {
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#menuFixo {
+    z-index: 10;
+
+    .languages {
+        position: fixed;
+        right: 0;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        li {
+            margin-right: 10px;
+            padding: 5px 0px;
+            display: flex;
+            align-items: center;
+            .btn {
+                display: flex;
+                align-items: center;
+                img {
+                    margin-right: 7px;
+                }
+                span {
+                    color: $blue;
+                    font-weight: bold;
+                    font-family: $Poppins;
+                    font-size: 15px;
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+    .networks {
+        position: fixed;
+        left: 0;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+        li {
+            margin-right: 10px;
+            padding: 5px 0px;
+            display: flex;
+            align-items: center;
+            .btn {
+                display: flex;
+                align-items: center;
+                img {
+                    margin-right: 7px;
+                }
+                span {
+                    color: $blue;
+                    font-weight: bold;
+                    font-family: $Poppins;
+                    font-size: 15px;
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    // #menuFixo {
+    //     display: none;
+    // }
+    #menuFixo {
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top: -7px;
+        display: flex;
+        justify-content: space-between;
+        .languages {
+            display: flex;
+            width: 63%;
+            position: initial;
+            flex-direction: initial;
+            top: initial;
+            left: initial;
+            padding: inherit;
+            li {
+                .btn {
+                    padding: 8px 64px;
+                    span {
+                        color: $white;
+                        &:hover {
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
+        .networks {
+            display: flex;
+            width: 50%;
+            justify-content: space-around;
+            position: initial;
+            flex-direction: initial;
+            top: initial;
+            left: initial;
+            padding: inherit;
+        }
+    }
+    .headerButons {
+        display: none;
+    }
+    .positionMenu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 101;
+        width: 100%;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .idioma {
+        ul {
+            li {
+                .btn {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    .positionMenu {
+        right: 4px;
+        top: 4px;
+    }
+    #menuFixo {
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top: -7px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        .languages {
+            width: 75%;
+            li {
+                .btn {
+                    padding: 7px;
+                    width: 70px;
+                }
+            }
+        }
+        .networks {
+            display: flex;
+            width: 50%;
+            justify-content: space-around;
+            position: initial;
+            flex-direction: initial;
+            top: initial;
+            left: initial;
+            padding: inherit;
+        }
+    }
+}
