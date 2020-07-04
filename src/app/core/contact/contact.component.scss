@@ -123,6 +123,20 @@
     margin-bottom: 10px;
 }
 
+.text-input.error {
+    border: 1px solid red;
+}
+
+textarea.error {
+    border: 1px solid red !important;
+}
+
+.txtError {
+    color: red;
+    margin: 1px 0 0;
+    font-size: 11px;
+}
+
 @media screen and (max-width: 768px) {
     .contact {
         &__filds {
@@ -136,10 +150,13 @@
 @media screen and (max-width: 600px) {
     .contact {
         &__fast {
+            display: grid;
             .sociais {
+                margin: 10px 0;
                 a {
                     .description {
-                        font-size: 11px;
+                        font-size: 15px;
+                        margin-left: 25px;
                     }
                 }
             }

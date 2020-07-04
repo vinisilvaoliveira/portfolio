@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { SendEmalService } from 'src/app/services/sendEmal.service';
 import { AddressEmail } from 'src/app/model/address.model';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -10,8 +11,10 @@ import { AddressEmail } from 'src/app/model/address.model';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private commonLanguage: CommonService, private sendEmalService: SendEmalService) { }
 
+  @ViewChildren('valitdataMain') valitdataMain: QueryList<any>;
+
+  dataMain: FormGroup;
   languageId: string = 'PT';
   placeNome: string = 'Nome Sobrenome';
   placeEmail: string = 'meuemail@dominio.com';
@@ -19,12 +22,24 @@ export class ContactComponent implements OnInit {
 
   loader: boolean;
   modal: string;
+  body: any;
 
-  addressEmail: AddressEmail;
+  constructor(
+    private commonLanguage: CommonService,
+    private sendEmalService: SendEmalService,
+    private fb: FormBuilder,
+  ) {
+    this.dataMain = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      message: ['', [Validators.required]],
+    })
+  }
 
 
   ngOnInit(): void {
-    this.addressEmail = new AddressEmail();
+    console.log(this.dataMain.get('name').value);
+
     this.commonLanguage.emitirlanguage.subscribe(
       ev => {
         this.languageId = ev;
@@ -51,23 +66,52 @@ export class ContactComponent implements OnInit {
 
 
   sendEmail() {
+
+    Object.keys(this.dataMain.controls).forEach((field) => {
+      const control = this.dataMain.get(field);
+      control.markAsTouched({ onlySelf: true });
+    });
+
+    const fieldsdataMain = [
+      'name',
+      'email',
+      'message',
+    ];
+    for (let i = 0; i < fieldsdataMain.length; i++) {
+      const fieldMain = fieldsdataMain[i];
+      if (this.dataMain.get(fieldMain).invalid) {
+        this.valitdataMain.toArray()[i].nativeElement.focus();
+        return;
+      }
+    }
+
     // Montei um novo objeto por causa do email que é adicionando depois
-    this.addressEmail = new AddressEmail(
-      this.addressEmail.name,
-      this.addressEmail.email,
-      this.addressEmail.message,
+    this.body = {
+      nome: this.dataMain.get('name').value,
+      email: this.dataMain.get('email').value,
+      mensage: this.dataMain.get('message').value,
 
-    );
-    console.log(this.addressEmail, '----------------');
+    };
+    console.log(this.body, '----------------');
 
 
-    this.sendEmalService.postEmail(this.addressEmail).subscribe(
+    this.loader = true;
+    this.sendEmalService.postEmail(this.body).subscribe(
       res => {
-        console.log(res, "foiiii");
-
+        this.loader = false;
+        if (this.languageId === 'PT') {
+          this.modal = 'E-mail enviado com sucesso';
+        } else {
+          this.modal = 'Email successfully sent';
+        }
       },
       error => {
-        console.log(error, "errororo");
+        this.loader = false;
+        if (this.languageId === 'PT') {
+          this.modal = 'Erro ao enviar e-mail, entre em contato por telefone';
+        } else {
+          this.modal = 'Error sending email, contact by phone';
+        }
       }
     );
   }

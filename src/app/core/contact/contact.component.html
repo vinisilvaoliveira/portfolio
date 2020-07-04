@@ -29,25 +29,40 @@
 
 
         </div>
-        <div class="contact__filds">
+        <div class="contact__filds" [formGroup]="dataMain">
             <div class="contact__filds--line col-md-8">
                 <label class="label" for="name">{{ languageId  === 'PT' ? 'Nome' : 'Name' }}</label>
-                <input class="text-input" [(ngModel)]="addressEmail.name"
+                <input class="text-input" formControlName="name" #valitdataMain
+                    [ngClass]="{'error': dataMain.get('name').invalid && (dataMain.get('name').dirty || dataMain.get('name').touched)}"
                     onkeyup="this.value=this.value.replace(/[<>$¨¨!@#1234567890*{}]/g,'')" id="name" name="name"
                     autocomplete="off" [placeholder]="placeNome" type="text">
+                <span class="txtError"
+                    *ngIf=" dataMain.get('name').invalid && (dataMain.get('name').dirty || dataMain.get('name').touched)">
+                    Campo inválido.
+                </span>
             </div>
 
             <div class="contact__filds--line col-md-8">
                 <label class="label" for="email">{{ languageId  === 'PT' ? 'E-mail' : 'Email' }}</label>
-                <input class="text-input" [(ngModel)]="addressEmail.email" id="email" name="email" autocomplete="off"
-                    [placeholder]="placeEmail" type="email">
+                <input class="text-input" formControlName="email" #valitdataMain
+                    [ngClass]="{'error': dataMain.get('email').invalid && (dataMain.get('email').dirty || dataMain.get('email').touched)}"
+                    id="email" name="email" autocomplete="off" [placeholder]="placeEmail" type="email">
+                <span class="txtError"
+                    *ngIf=" dataMain.get('email').invalid && (dataMain.get('email').dirty || dataMain.get('email').touched)">
+                    Campo inválido.
+                </span>
             </div>
 
             <div class="contact__filds--line col-md-8">
                 <label class="label" for="mensagem">{{ languageId  === 'PT' ? 'Mensagem' : 'Message' }}</label>
-                <textarea class="text-input txt-mensagem" [(ngModel)]="addressEmail.message" [placeholder]="placeMsg"
-                    autocomplete="off" id="text_mensagem" rows="3"
+                <textarea class="text-input txt-mensagem" formControlName="message" #valitdataMain
+                    [ngClass]="{'error': dataMain.get('message').invalid && (dataMain.get('message').dirty || dataMain.get('message').touched)}"
+                    [placeholder]="placeMsg" autocomplete="off" id="text_mensagem" rows="3"
                     onkeyup="this.value=this.value.replace(/[<>$¨¨#*{}]/g,'')"></textarea>
+                <span class="txtError"
+                    *ngIf=" dataMain.get('message').invalid && (dataMain.get('message').dirty || dataMain.get('message').touched)">
+                    Campo inválido.
+                </span>
             </div>
 
             <div class="button">

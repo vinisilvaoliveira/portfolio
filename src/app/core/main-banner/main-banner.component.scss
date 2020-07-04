@@ -302,9 +302,12 @@
             }
         }
         .slideshow-container {
-            padding: 0 10px 18vw;
+            padding: 0 10px 10vw;
             .mySlides {
                 width: 100%;
+                .title {
+                    font-size: 18px;
+                }
             }
         }
     }

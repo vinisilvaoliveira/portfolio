@@ -52,6 +52,7 @@
                 font-size: 20px;
                 position: relative;
                 font-weight: 700;
+                cursor: pointer;
                 &::before {
                     content: "";
                     transition: width 0.3s;
@@ -218,7 +219,7 @@
         justify-content: space-between;
         padding: 5px 0;
         .languages {
-            width: 75%;
+            width: 50%;
             li {
                 .btn {
                     padding: 7px;
